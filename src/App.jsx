@@ -1,76 +1,61 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header";
+import Contact from "./components/contact";
+import NotFound from "./components/NotFound";
 import TaskList from "./components/TaskList";
-import AddTask from "./components/AddTask";
 
-function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Study React",
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "Practice JavaScript",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Review AI",
-      completed: false,
-    },
-  ]);
-
-  const addTask = (title) => {
-    const newTask = {
-      id: Date.now(),
-      title: title,
-      completed: false,
-    };
-
-    setTasks([...tasks, newTask]);
-  };
-
-  const toggleTask = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id
-          ? { ...task, completed: !task.completed }
-          : task
-      )
-    );
-  };
+function Home() {
+  useEffect(() => {
+    document.title = "Study Planner";
+  }, []);
 
   return (
-    <div className="app">
+    <div
+      className="home"
+      style={{
+        textAlign: "center",
+        padding: "50px",
+      }}
+    >
+      <h1>Study Planner</h1>
+
+      <p>Welcome to my Study Planner application.</p>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div className="container py-5">
+      <h1>About</h1>
+
+      <p>
+        This project is a React Study Planner application.
+      </p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
       <Header />
 
-      <div className="tasks">
-        <h2>Today's Tasks</h2>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-        <AddTask onAddTask={addTask} />
+        <Route path="/about" element={<About />} />
 
-        {tasks.length > 0 ? (
-          <TaskList
-            tasks={tasks}
-            onToggleTask={toggleTask}
-          />
-        ) : (
-          <p className="no-tasks">
-            No tasks available
-          </p>
-        )}
+        <Route path="/tasks" element={<TaskList />} />
 
-        {tasks.length > 0 && (
-          <p className="task-count">
-            You have {tasks.length} tasks to study
-          </p>
-        )}
-      </div>
-    </div>
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

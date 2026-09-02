@@ -1,0 +1,29 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  margin: 14px 0;
+  background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+  border: 1px solid #f9a8d4;
+  border-radius: 15px;
+  color: #831843;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.task:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(190, 24, 93, 0.25);
+}
+.completed {
+  color: #15803d;
+  font-size: 15px;
+  font-weight: 700;
+}
+.notCompleted {
+  color: #be123c;
+  font-size: 15px;
+  font-weight: 700;
+}

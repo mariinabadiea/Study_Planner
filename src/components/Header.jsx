@@ -1,10 +1,30 @@
+import { NavLink } from "react-router-dom";
+
 function Header() {
   return (
-    <header className="header">
-      <h1>Study Planner 📚</h1>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+      <NavLink className="navbar-brand fw-bold" to="/">
+        Study Planner
+      </NavLink>
 
-      <p>Plan your study and stay organized</p>
-    </header>
+      <div className="navbar-nav ms-auto">
+        <NavLink className="nav-link" to="/">
+          Home
+        </NavLink>
+
+        <NavLink className="nav-link" to="/about">
+          About
+        </NavLink>
+
+        <NavLink className="nav-link" to="/tasks">
+          Tasks
+        </NavLink>
+
+        <NavLink className="nav-link" to="/contact">
+          Contact
+        </NavLink>
+      </div>
+    </nav>
   );
 }
 

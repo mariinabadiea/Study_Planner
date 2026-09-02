@@ -1,24 +1,19 @@
 * {
   box-sizing: border-box;
 }
-
 html,
 body,
 #root {
   min-height: 100%;
 }
-
 body {
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    #3b0a2e,
-    #831843,
-    #9d174d,
-    #500724
-  );
-}
-
-#root {
+  min-width: 320px;
   min-height: 100vh;
+  background: #fdf2f8;
+  font-family: Arial, sans-serif;
+}
+button,
+input {
+  font-family: inherit;
 }
